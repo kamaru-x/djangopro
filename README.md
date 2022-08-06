@@ -1,1 +1,1 @@
-# temp-gallery
+# djangopro
