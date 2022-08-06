@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg bg-light">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home:addtogallery' %}">ADD TO Gallery</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <h1>Gallery</h1>
+    <hr>
+    <div class="row">
+    {% for d in data %}
+    <div class="card col-md-3">
+        <a href="{% url 'home:details' d.id %}"><img src="{{ d.Image.url }}" class="card-img-top" alt="Fissure in Sandstone"/></a>
+        <div class="card-body">
+          <h5 class="card-title">{{d.Name}}</h5>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    {% endblock %}
+  </body>
+</html>
